@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/lunatiq-san/goit-node-hw-01#readme",
   "dependencies": {
-    "commander": "^8.2.0"
+    "commander": "^8.2.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
