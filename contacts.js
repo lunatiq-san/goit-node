@@ -12,6 +12,7 @@ const listContacts = async () => {
     const data = await fs.readFile(contactsPath);
     const contacts = JSON.parse(data);
 
+    console.log("listContacts -> contacts: ", contacts);
     return contacts;
   } catch (error) {
     console.log(error.message);
@@ -27,7 +28,6 @@ const getContactById = async (contactId) => {
       throw new Error(`Contact with ID: ${contactId} not found`);
     }
 
-    console.log(contact);
     return contact;
   } catch (error) {
     console.log(error.message);
