@@ -1,66 +1,73 @@
-const fs = require("fs");
+const fs = require("fs/promises");
 const path = require("path");
 
 /*
  * Раскомментируй и запиши значение
  */
-const contactsPath = path.dirname("./db/contacts.json");
+const contactsPath = path.join(__dirname, "db/contacts.json");
 
 // TODO: задокументировать каждую функцию
-function listContacts() {
-  fs.readFile("./db/contacts.json", "utf8", (error, data) => {
-    if (error) throw error;
+const listContacts = async () => {
+  try {
+    const data = await fs.readFile(contactsPath);
+    const contacts = JSON.parse(data);
 
-    console.log(data);
-  });
-}
+    return contacts;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
-function getContactById(contactId) {
-  fs.readFile("./db/contacts.json", "utf8", (error, data) => {
-    if (error) throw error;
+const getContactById = async (contactId) => {
+  try {
+    const contacts = await listContacts();
+    const contact = contacts.find((contact) => contact.id === contactId);
 
-    try {
-      const parsedContacts = JSON.parse(data);
-      console.log(parsedContacts.find((contact) => contactId === contact.id));
-    } catch (error) {
-      console.log("Error parsing JSON", error);
+    if (!contact) {
+      throw new Error(`Contact with ID: ${contactId} not found`);
     }
-  });
-}
 
-function removeContact(contactId) {
-  fs.readFile("./db/contacts.json", "utf8", (error, data) => {
-    if (error) throw error;
+    console.log(contact);
+    return contact;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
-    try {
-      const parsedContacts = JSON.parse(data);
-      console.log(parsedContacts.filter((contact) => contactId !== contact.id));
-    } catch (error) {
-      console.log("Error parging JSON", error);
-    }
-  });
-}
+const removeContact = async (contactId) => {
+  try {
+    const contacts = await listContacts();
+    const newContactsList = contacts.filter(
+      (contact) => contactId !== contact.id
+    );
 
-function addContact(name, email, phone) {
-  fs.readFile("./db/contacts.json", "utf8", (error, data) => {
-    if (error) throw error;
-    const parsedContacts = JSON.parse(data);
+    console.log(newContactsList);
+    return newContactsList;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+const addContact = async (name, email, phone) => {
+  try {
+    const contacts = await listContacts();
+    console.log("addContact -> contacts: ", contacts);
     const newContact = {
-      id: parsedContacts[parsedContacts.length - 1].id + 1,
+      id: contacts[contacts.length - 1].id + 1,
       name,
       email,
       phone,
     };
+    contacts.push(newContact);
+    const json = JSON.stringify(contacts, null, 2);
+    await fs.writeFile(contactsPath, json);
 
-    parsedContacts.push(newContact);
-
-    const json = JSON.stringify(parsedContacts, null, 2);
-    fs.writeFile("./db/contacts.json", json, "utf8", (error) => {
-      if (error) throw error;
-      console.log("File successfully written!");
-    });
-  });
-}
+    console.log("File successfully written!");
+    return contacts;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
 module.exports = {
   listContacts,
