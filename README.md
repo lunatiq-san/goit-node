@@ -138,7 +138,6 @@ invokeAction(argv);
 
 Запусти команды в терминале и сделай отдельный скриншот результата выполнения каждой команды.
 
-```shell
 # Получаем и выводим весь список контактов в виде таблицы (console.table)
 
 node index.js --action list
@@ -158,7 +157,6 @@ https://monosnap.com/file/5e4gbFiduOVZLrepYhLWFsOE4Koftq
 
 node index.js --action remove --id=3
 https://monosnap.com/file/54IN6QBMeOz5Zmf3Pc1bp7MnSHgdEn
-```
 
 ## Шаг 6 - Сдача домашнего задания. ✅
 
