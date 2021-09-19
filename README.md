@@ -138,26 +138,27 @@ invokeAction(argv);
 
 Запусти команды в терминале и сделай отдельный скриншот результата выполнения каждой команды.
 
+```shell
 # Получаем и выводим весь список контактов в виде таблицы (console.table)
 
 node index.js --action list
-!['list'](https://monosnap.com/file/WLJpcnv9EdnVklkvs1ZtHtT9dupP1z)
-<img alt="list" src="https://monosnap.com/file/WLJpcnv9EdnVklkvs1ZtHtT9dupP1z">
+https://monosnap.com/file/WLJpcnv9EdnVklkvs1ZtHtT9dupP1z
 
 # Получаем контакт по id
 
 node index.js --action get --id 5
-<img alt="get-5" src="https://monosnap.com/file/FUkiKn4Kl9ePdGSSPDSti3U4jJt9Fu">
+https://monosnap.com/file/FUkiKn4Kl9ePdGSSPDSti3U4jJt9Fu
 
-# Добавялем контакт
+# Добавляем контакт
 
 node index.js --action add --name Mango --email mango@gmail.com --phone 322-22-22
-<img alt="add" src="https://monosnap.com/file/5e4gbFiduOVZLrepYhLWFsOE4Koftq">
+https://monosnap.com/file/5e4gbFiduOVZLrepYhLWFsOE4Koftq
 
 # Удаляем контакт
 
 node index.js --action remove --id=3
-<img alt="remove" src="https://monosnap.com/file/54IN6QBMeOz5Zmf3Pc1bp7MnSHgdEn">
+https://monosnap.com/file/54IN6QBMeOz5Zmf3Pc1bp7MnSHgdEn
+```
 
 ## Шаг 6 - Сдача домашнего задания. ✅
 
