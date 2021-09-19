@@ -141,6 +141,7 @@ invokeAction(argv);
 ```shell
 # Получаем и выводим весь список контактов в виде таблицы (console.table)
 node index.js --action list
+!['list'](https://monosnap.com/file/WLJpcnv9EdnVklkvs1ZtHtT9dupP1z)
 <img alt="list" src="https://monosnap.com/file/WLJpcnv9EdnVklkvs1ZtHtT9dupP1z">
 
 # Получаем контакт по id
