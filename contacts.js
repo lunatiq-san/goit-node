@@ -12,7 +12,6 @@ const listContacts = async () => {
     const data = await fs.readFile(contactsPath);
     const contacts = JSON.parse(data);
 
-    console.log("listContacts -> contacts: ", contacts);
     return contacts;
   } catch (error) {
     console.log(error.message);
@@ -22,7 +21,9 @@ const listContacts = async () => {
 const getContactById = async (contactId) => {
   try {
     const contacts = await listContacts();
-    const contact = contacts.find((contact) => contact.id === contactId);
+    const contact = contacts.find(
+      (contact) => contact.id === Number(contactId)
+    );
 
     if (!contact) {
       throw new Error(`Contact with ID: ${contactId} not found`);
@@ -37,12 +38,15 @@ const getContactById = async (contactId) => {
 const removeContact = async (contactId) => {
   try {
     const contacts = await listContacts();
-    const newContactsList = contacts.filter(
-      (contact) => contactId !== contact.id
+    const index = contacts.findIndex(
+      (contact) => contact.id === Number(contactId)
     );
+    if (index === -1) {
+      throw new Error(`Contact with ID: ${contactId} not found`);
+    }
 
-    console.log(newContactsList);
-    return newContactsList;
+    contacts.splice(index, 1);
+    return contacts;
   } catch (error) {
     console.log(error.message);
   }
@@ -51,7 +55,6 @@ const removeContact = async (contactId) => {
 const addContact = async (name, email, phone) => {
   try {
     const contacts = await listContacts();
-    console.log("addContact -> contacts: ", contacts);
     const newContact = {
       id: contacts[contacts.length - 1].id + 1,
       name,
