@@ -46,6 +46,11 @@ const removeContact = async (contactId) => {
     }
 
     contacts.splice(index, 1);
+    await updateContacts(contacts);
+    console.log(
+      `The contact with ID: ${contactId} was removed! Contact list: `
+    );
+
     return contacts;
   } catch (error) {
     console.log(error.message);
@@ -62,8 +67,7 @@ const addContact = async (name, email, phone) => {
       phone,
     };
     contacts.push(newContact);
-    const json = JSON.stringify(contacts, null, 2);
-    await fs.writeFile(contactsPath, json);
+    await updateContacts(contacts);
 
     console.log("File successfully written!");
     return contacts;
@@ -71,6 +75,15 @@ const addContact = async (name, email, phone) => {
     console.log(error.message);
   }
 };
+
+async function updateContacts(newContactsList) {
+  try {
+    const json = JSON.stringify(newContactsList, null, 2);
+    await fs.writeFile(contactsPath, json);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 module.exports = {
   listContacts,

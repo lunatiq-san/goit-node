@@ -1,5 +1,8 @@
 # Домашнее задание 1
 
+<details><summary>Tasks</summary>
+<p>
+
 ## Шаг 1 ✅
 
 - Инициализируй npm в проекте
@@ -128,25 +131,33 @@ function invokeAction({ action, id, name, email, phone }) {
 invokeAction(argv);
 ```
 
-## Шаг 5
+</p>
+</details>
+
+## Шаг 5 ✅
 
 Запусти команды в терминале и сделай отдельный скриншот результата выполнения каждой команды.
 
 ```shell
 # Получаем и выводим весь список контактов в виде таблицы (console.table)
 node index.js --action list
+<img alt="list" src="https://monosnap.com/file/WLJpcnv9EdnVklkvs1ZtHtT9dupP1z">
 
 # Получаем контакт по id
 node index.js --action get --id 5
+<img alt="get-5" src="https://monosnap.com/file/FUkiKn4Kl9ePdGSSPDSti3U4jJt9Fu">
 
 # Добавялем контакт
 node index.js --action add --name Mango --email mango@gmail.com --phone 322-22-22
+<img alt="add" src="https://monosnap.com/file/5e4gbFiduOVZLrepYhLWFsOE4Koftq">
 
 # Удаляем контакт
 node index.js --action remove --id=3
+<img alt="remove" src="https://monosnap.com/file/54IN6QBMeOz5Zmf3Pc1bp7MnSHgdEn">
+
 ```
 
-## Шаг 6 - Сдача домашнего задания.
+## Шаг 6 - Сдача домашнего задания. ✅
 
 Скриншоты выполнения команд, можно залить на любой бесплатный облачный сервис хранения картинок (Пример: [monosnap](https://monosnap.com/), [imgbb.com](https://imgbb.com/)) и соответствующие ссылки необходимо добавить в файл README.md. Создайте этот файл в корне проекта. После прикрепите ссылку на репозиторий с домашним заданием в [schoology](https://app.schoology.com/login) для проверки ментором.
 
