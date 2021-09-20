@@ -43,6 +43,6 @@ async function invokeAction({ action, id, name, email, phone }) {
   }
 }
 
-(function () {
-  invokeAction(argv);
+(async function () {
+  await invokeAction(argv);
 })();
