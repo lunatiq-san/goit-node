@@ -1,5 +1,5 @@
-const contactsOperations = require("./contacts");
 const { program } = require("commander");
+const contactsOperations = require("./controllers/contacts");
 
 program
   .option("-a, --action <type>", "choose action")
@@ -12,7 +12,6 @@ program.parse(process.argv);
 
 const argv = program.opts();
 
-// TODO: рефакторить
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
